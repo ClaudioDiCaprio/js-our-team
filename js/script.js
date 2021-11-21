@@ -35,3 +35,25 @@ members = [
         'img': "img/barbara-ramos-graphic-designer.jpg",
     },
 ];
+
+let items; 
+
+const container = document.querySelector('.team-container');
+// console.log(container);
+
+for (let i = 0; i < members.length; i++){
+   
+   items =`
+   <div class="team-card">
+        <div class="card-image">
+            <img src=${members[i].img} alt=${members[i].name}>
+        </div>
+        <div class="card-text">
+            <h3>${members[i].name}</h3>
+            <p>${members[i].role}</p>
+        </div>
+    </div>
+   `
+    // console.log(items);
+    container.innerHTML += items;
+}
