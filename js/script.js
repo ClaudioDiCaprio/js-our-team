@@ -1,5 +1,8 @@
 // alert('che minchia guaddi');
-
+// Ricreiamo le card del nostro team aggiungendo al layout di base fornito, il nostro javascript in cui:
+// Creiamo il nostro array di oggetti che rappresentano ciascun membro del team. Ogni membro dovrà avere le informazioni necessarie per stampare la relativa card: Nome, Ruolo e Foto.
+// Prendendo come riferimento il layout di esempio presente nell'html, stampiamo tutte le card del nostro team.
+// BONUS: Utilizziamo poi gli input presenti nella pagina per permettere all'utente di aggiungere nuovi membri del team.
 
 
 
@@ -57,3 +60,36 @@ for (let i = 0; i < members.length; i++){
     // console.log(items);
     container.innerHTML += items;
 }
+
+
+const addButton = document.getElementById('addMemberButton');
+// console.log(addButton);
+addButton.addEventListener('click', function(){
+    let newName = document.getElementById('name').value;
+    let newRole = document.getElementById('role').value;
+    let newImage = document.getElementById('image').value;
+
+    const newMember = {
+        'name': newName,
+        'role': newRole,
+        'img': newImage,
+    }
+
+    members.push(newMember);
+
+
+    items =`
+    <div class="team-card">
+         <div class="card-image">
+             <img src=${newMember.img} alt=${newMember.name}>
+         </div>
+         <div class="card-text">
+             <h3>${newMember.name}</h3>
+             <p>${newMember.role}</p>
+         </div>
+     </div>
+    `
+    console.log(items);
+    container.innerHTML += items;
+
+});    
